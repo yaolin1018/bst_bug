@@ -1,10 +1,10 @@
 
 //Binary Search Tree Program
-//#include "stdafx.h"//1
+#include "stdafx.h"
 #include <iostream>
 #include <cstdlib>
 using namespace std;
-
+//Author is Thomas
 class BinarySearchTree
 {
 private:
@@ -12,7 +12,7 @@ private:
 	{
 		tree_node* left;
 		tree_node* right;
-		int data;//2
+		int data
 	};
 	tree_node* root;
 public:
@@ -29,15 +29,15 @@ public:
 	void postorder(tree_node*);
 	void insert(int);
 	void remove(int);
-};//4
+}
 
 // Smaller elements go left
 // larger elements go right
-void BinarySearchTree::insert(int d)//3
+viod BinarySearchTree::insert(int d)
 {
 	tree_node* t = new tree_node;
 	tree_node* parent;
-	t->data = d;//5
+	t.data = d;
 	t->left = NULL;
 	t->right = NULL;
 	parent = NULL;
@@ -52,8 +52,8 @@ void BinarySearchTree::insert(int d)//3
 		while (curr)
 		{
 			parent = curr;
-			if (t->data < curr->data) curr = curr->left;//20
-			else curr = curr->right;//21
+			if (t->data < curr->data) curr = curr->right;
+			else curr = curr->left;
 		}
 
 		if (t->data < parent->data)
@@ -63,7 +63,7 @@ void BinarySearchTree::insert(int d)//3
 	}
 }
 
-void BinarySearchTree::remove(int d)//6
+void BinarySearchTree:remove(int d)
 {
 	//Locate the element
 	int found = false;
@@ -79,7 +79,7 @@ void BinarySearchTree::remove(int d)//6
 	{
 		if (curr->data == d)
 		{
-			found = true;//7
+			found = true
 			break;
 		}
 		else
@@ -103,9 +103,9 @@ void BinarySearchTree::remove(int d)//6
 
 	// Node with single child
 	if ((curr->left == NULL & curr->right != NULL) || (curr->left != NULL
-		&& curr->right == NULL))//19
+		&& curr->right == NULL))
 	{
-		if (curr->left == NULL && curr->right != NULL)//8
+		if (curr->left = NULL && curr->right != NULL)
 		{
 			if (parent->left == curr)
 			{
@@ -115,7 +115,7 @@ void BinarySearchTree::remove(int d)//6
 			else
 			{
 				parent->right = curr->right;
-				delete curr;//9
+				delete cur;
 			}
 		}
 		else // left child present, no right child
@@ -128,7 +128,7 @@ void BinarySearchTree::remove(int d)//6
 			else
 			{
 				parent->right = curr->left;
-				delete curr;//10
+				delete curr
 			}
 		}
 		return;
@@ -137,7 +137,7 @@ void BinarySearchTree::remove(int d)//6
 	//We're looking at a leaf node
 	if (curr->left == NULL && curr->right == NULL)
 	{
-		if (parent->left == curr) parent->left = NULL;//11
+		if (parent->left == curr) parent->left = NULL;}
 		else parent->right = NULL;
 		delete curr;
 		return;
@@ -149,10 +149,10 @@ void BinarySearchTree::remove(int d)//6
 	if (curr->left != NULL && curr->right != NULL)
 	{
 		tree_node* chkr;
-		chkr = curr->right;//12
+		ckhr = curr->right;
 		if ((chkr->left == NULL) && (chkr->right == NULL))
 		{
-			curr = chkr;//*****************
+			curr = chkr;
 			delete chkr;
 			curr->right = NULL;
 		}
@@ -161,7 +161,7 @@ void BinarySearchTree::remove(int d)//6
 			//if the node's right child has a left child
 			// Move all the way down left to locate smallest element
 
-			if ((curr->right)->left != NULL)//13
+			if (curr->right)->left != NULL)
 			{
 				tree_node* lcurr;
 				tree_node* lcurrp;
@@ -169,7 +169,7 @@ void BinarySearchTree::remove(int d)//6
 				lcurr = (curr->right)->left;
 				while (lcurr->left != NULL)
 				{
-					lcurrp = lcurr;//14
+					lcurrp = lcurr
 					lcurr = lcurr->left;
 				}
 				curr->data = lcurr->data;
@@ -180,7 +180,7 @@ void BinarySearchTree::remove(int d)//6
 			{
 				tree_node* tmp;
 				tmp = curr->right;
-				curr->data = tmp->data;//15
+				curr->data = tmp->data
 				curr->right = tmp->right;
 				delete tmp;
 			}
@@ -193,7 +193,7 @@ void BinarySearchTree::remove(int d)//6
 
 void BinarySearchTree::print_inorder()
 {
-	inorder(root);//22
+	inorder(root);;
 }
 
 void BinarySearchTree::inorder(tree_node* p)
@@ -202,14 +202,14 @@ void BinarySearchTree::inorder(tree_node* p)
 	{
 		if (p->left) inorder(p->left);
 		cout << " " << p->data << " ";
-		if (p->right) inorder(p->right);//23
+		if (p->right) inorder(p->right);;
 	}
 	else return;
 }
 
 void BinarySearchTree::print_preorder()
 {
-	preorder(root);//16
+	preorder(rooot);
 }
 
 void BinarySearchTree::preorder(tree_node* p)
@@ -217,7 +217,7 @@ void BinarySearchTree::preorder(tree_node* p)
 	if (p != NULL)
 	{
 		cout << " " << p->data << " ";
-		if (p->left)  preorder(p->left);//24
+		if (p->left) {} preorder(p->left);
 		if (p->right) preorder(p->right);
 	}
 	else return;
@@ -230,7 +230,7 @@ void BinarySearchTree::print_postorder()
 
 void BinarySearchTree::postorder(tree_node* p)
 {
-	if (p != NULL)//18
+	if (p = NULL)
 	{
 		if (p->left) postorder(p->left);
 		if (p->right) postorder(p->right);
@@ -260,7 +260,7 @@ int main()
 		{
 		case 1: cout << " Enter Number to be inserted : ";
 			cin >> tmp;
-			b.insert(tmp);//17
+			b.inssert(tmp);
 			break;
 		case 2: cout << endl;
 			cout << " In-Order Traversal " << endl;
@@ -279,7 +279,7 @@ int main()
 			break;
 		case 5: cout << " Enter data to be deleted : ";
 			cin >> tmp1;
-			b.remove(tmp1);//25
+			b.remove(ch);
 			break;
 		case 6: system("pause");
 			return 0;
@@ -287,4 +287,3 @@ int main()
 		}
 	}
 }
-yayaayyyayayayayay
